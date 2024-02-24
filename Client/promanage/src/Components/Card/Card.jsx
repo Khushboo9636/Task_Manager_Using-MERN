@@ -83,18 +83,23 @@ function Card({ onMove, currentBoard, moveCard, task, availableCategories, onUpd
     await handleSaveEdit(updatedTask, task);
     // You can perform additional actions after saving edit locally
   };
-  const handleChecklistItemChange = (index) => {
-    // Toggle the checked state of the checklist item
-    const updatedTask = { ...task };
-    updatedTask.checklist[index].isChecked = !updatedTask.checklist[index].isChecked;
-
-    // Update the checked count
-    const newCheckedCount = updatedTask.checklist.filter(item => item.isChecked).length;
-    setCheckedCount(newCheckedCount);
-
-    // Save the updated task
-    handleSaveEdit(updatedTask);
+  const handleChecklistItemChange = async (index) => {
+    try {
+      const updatedTask = { ...task };
+      updatedTask.checklist[index].isChecked = !updatedTask.checklist[index].isChecked;
+  
+      // Save the updated task
+      await handleSaveEdit(updatedTask, task); // Pass the original task as well
+  
+      // Update the checked count
+      const newCheckedCount = updatedTask.checklist.filter(item => item.isChecked).length;
+      setCheckedCount(newCheckedCount);
+    } catch (error) {
+      console.error('Error updating checklist item:', error);
+      // Handle error
+    }
   };
+  
   
   const copyShareableLink = async (taskId) => {
     try {

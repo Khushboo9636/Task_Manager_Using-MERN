@@ -286,7 +286,7 @@ function Board() {
       }
   
       const updatedTaskData = await updatedTaskResponse.json();
-  
+      handleUpdateTask(updatedTaskData);
       // Update local state with the updated task
       const updatedTasks = tasks.map(task =>
         task._id === updatedTaskData._id ? updatedTaskData : task
