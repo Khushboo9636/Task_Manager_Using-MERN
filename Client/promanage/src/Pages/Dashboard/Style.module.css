@@ -1,0 +1,11 @@
+.main{
+    display: flex;
+    flex-flow: row;
+}
+.mainContent{
+  
+    width: 100%;
+    float: inline-start;
+    height: 100vh;
+    margin: 10px;
+}

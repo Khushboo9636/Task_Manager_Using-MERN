@@ -1,0 +1,73 @@
+
+.main{
+ width: 100vw;
+ height: 100vh;
+}
+.header{
+width: 100vw;
+height: 10vh;
+padding-left: 25px;
+}
+
+.bodyContainer{
+    display: flex;
+    flex-flow: row;
+    width: 100%;
+    height: 80vh;
+
+}
+.leftContainer{
+    width: 35%;
+    height: 40vh;
+    background-color:  #F9FCFF;
+    display: flex;
+    flex-flow: column;
+    margin: 20px;
+
+}
+.rightContainer{
+    width: 35%;
+    height: 40vh;
+    background-color:  #F9FCFF;
+    display: flex;
+    flex-flow: column;
+    margin: 20px;
+
+}
+.circle{
+    
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #90C4CC;
+    display: inline-block;
+    margin-right: 5px;
+
+}
+.mainbody{
+    height: 100%;
+    display: block;
+    display: flex;
+    flex-flow: column;
+    margin-top: 20px;
+    margin-left: 10px;
+    margin-right: 15px;
+    margin-bottom: 20px;
+}
+.analyisis{
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+    margin: 10px;
+
+}
+.combo{
+    display: flex;
+    flex-flow: row;
+}
+.titleName{
+
+}
+.number{
+
+}

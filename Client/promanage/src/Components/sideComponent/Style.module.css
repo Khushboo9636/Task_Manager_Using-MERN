@@ -1,0 +1,43 @@
+
+.mainContainer{
+    align-items: center;
+    display: flex;
+    height: 100vh;
+    width: 48vw;
+    justify-content: center;
+    background-color:#17A2B8;
+}
+.back{
+    position: absolute;
+    width: 18vw;
+    height: 30vh;
+    margin-bottom: 116px;
+}
+.showContainer{
+    align-items: center;
+    color: #000;
+    display: flex;
+    flex-direction: column;
+    font-size: 1.6rem;
+    font-weight: 600;
+    /* gap: .3rem; */
+    height: 70vh;
+    justify-content: center;
+    
+    text-align: center;
+    width: 55vw;
+    position: absolute;
+
+}
+
+.art{
+    width: 250px;
+}
+.heading{
+    display: flex;
+    color: white;
+}
+.p{
+    color: white;
+    margin-left: .5rem;
+}

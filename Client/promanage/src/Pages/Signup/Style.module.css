@@ -1,0 +1,14 @@
+.main{
+    width: 100vw;
+    height: 100vh;
+}
+.leftContainer{
+    width: 50vw;
+    height: 100vh;
+    float: left;
+}
+.rightContainer{
+    width: 50vw;
+    height: 100vh;
+    float: right;
+}

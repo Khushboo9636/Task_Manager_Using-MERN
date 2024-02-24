@@ -1,0 +1,118 @@
+.card{
+    background-color: #ffffff;
+  border-radius: 5px;
+  padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.cardTop{
+    /* display: flex;
+    gap: 5px; */
+    
+    width: 100%;
+}
+.cardTopLabels {
+    display: flex;
+    gap: 10px;
+    flex-flow: row;
+    justify-content: space-between;
+    width: 100%;
+}
+.card_top svg{
+    opacity: 0;
+    transition: 200ms;
+}
+.card:hover .card_top svg{
+    opacity: 1;
+}
+.cardTitle {
+    font-weight: bold;
+    margin-top: 5px;
+    margin-bottom: 10px;
+  }
+  
+  .cardBody {
+    margin-bottom: 10px;
+    cursor: pointer;
+  }
+  
+  .checklist {
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  .checklistItems {
+    margin-top: 5px;
+  }
+  
+  .cardFooter {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .cardFooterLabels {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .cardFooterButtons {
+    display: flex;
+    gap: 10px;
+  }
+ 
+.dropdownMenu {
+    display: flex;
+    flex-flow: column;
+    background-color: white;
+    padding: 10px;
+    border: 1px solid #ccc;
+    align-items: flex-start;
+    width: 15%;
+    float: inline-end;
+    border-color: antiquewhite;
+    border-radius: 12px;
+  }
+  .dropdownMenu button{
+    border: none;
+    background: white;
+
+  }
+  .redCircle {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: red;
+    display: inline-block;
+    margin-right: 5px;
+  }
+  
+  .blueCircle {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: blue;
+    display: inline-block;
+    margin-right: 5px;
+  }
+  
+  .greenCircle {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: green;
+    display: inline-block;
+    margin-right: 5px;
+  }  
+  .priorityCircle {
+    display: flex;
+    align-items: center;
+  }
+  .moreHorizontalIcon {
+    margin-left: auto; /* Push the More Horizontal icon to the right */
+  }
+  .pri{
+    display: flex;
+    flex-flow: row;
+  }
