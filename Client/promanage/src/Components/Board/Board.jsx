@@ -132,10 +132,7 @@ function Board() {
 
       const createdTodo = await response.json();
      setTasks([...tasks, createdTodo]); // Add the new todo to the tasks list
-       // Update tasks state with the newly created task
-  //  setTasks(prevTasks => [...prevTasks, createdTodo]);
-      // Save updated tasks to local storage
-      //localStorage.setItem('tasks', JSON.stringify([...tasks, createdTodo]));
+       
 
       setShowTodoModal(false); // Close TodoModal after saving
     } catch (error) {
@@ -227,6 +224,39 @@ function Board() {
   }
 
 
+  // const handleSaveEdit = async (updatedTask, originalTask) => {
+  //   try {
+  //     const token = localStorage.getItem('token');
+  //     const response = await fetch(`http://localhost:4000/api/task/edit/${originalTask._id}`, {
+  //       method: 'PUT',
+  //       headers: {
+  //         'Content-Type': 'application/json',
+  //         'Authorization': `Bearer ${token}`,
+  //       },
+  //       body: JSON.stringify(updatedTask),
+  //     });
+  
+  //     if (!response.ok) {
+  //       throw new Error('Network response was not ok.');
+  //     }
+      
+  //     // Update task in the UI after successful API call
+  //     handleUpdateTask(updatedTask);
+  //     await fetchTasks();
+  //     console.log('Task updated successfully:', updatedTask);
+  
+  //     // Update local storage
+  //     const updatedTasks = tasks.map(task =>
+  //       task._id === updatedTask._id ? updatedTask : task
+  //     );
+  //     setTasks(updatedTasks);
+  //     localStorage.setItem('tasks', JSON.stringify(updatedTasks));
+  //   } catch (error) {
+  //     console.error('Error updating task:', error);
+  //     alert('Failed to update the task.');
+  //   }
+  // };
+  
   const handleSaveEdit = async (updatedTask, originalTask) => {
     try {
       const token = localStorage.getItem('token');
@@ -243,23 +273,33 @@ function Board() {
         throw new Error('Network response was not ok.');
       }
   
-      // Update task in the UI after successful API call
-      handleUpdateTask(updatedTask);
-      console.log('Task updated successfully:', updatedTask);
+       // Fetch the updated task from the backend using its ID
+     const updatedTaskResponse = await fetch(`http://localhost:4000/api/task/gettask/${originalTask._id}`, {
+         method: 'GET',  
+     headers: {
+        'Authorization': `Bearer ${token}`,
+      }
+    });
   
-      // Update local storage
+      if (!updatedTaskResponse.ok) {
+        throw new Error('Failed to fetch updated task.');
+      }
+  
+      const updatedTaskData = await updatedTaskResponse.json();
+  
+      // Update local state with the updated task
       const updatedTasks = tasks.map(task =>
-        task._id === updatedTask._id ? updatedTask : task
+        task._id === updatedTaskData._id ? updatedTaskData : task
       );
       setTasks(updatedTasks);
-      localStorage.setItem('tasks', JSON.stringify(updatedTasks));
+  
+      console.log('Task updated successfully:', updatedTaskData);
     } catch (error) {
       console.error('Error updating task:', error);
       alert('Failed to update the task.');
     }
   };
   
-
   return (
     <div className={style.main}>
       <div className={style.topheading}>

@@ -69,34 +69,8 @@ function TodoModal({ onClose, onSave ,task }) {
         dueDate,
       };
   
-      const token = localStorage.getItem('token');
-      let url = 'http://localhost:4000/api/task/create';
-      let method = 'POST';
-  
-      // If task prop is present, it means we are updating an existing task
-      if (task) {
-        url = `http://localhost:4000/api/task/edit/${task._id}`;
-        method = 'PUT';
-      }
-  
-      // Make POST or PUT request to backend based on whether it's a new task or editing an existing one
-      const response = await fetch(url, {
-        method,
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify(todoData),
-      });
-  
-      if (!response.ok) {
-        throw new Error('Network response was not ok.');
-      }
-  
-      const data = await response.json();
-  
-      console.log('Success:', data);
-      onSave(data); // Pass the saved task data to the parent component
+      
+      onSave(todoData); // Pass the saved task data to the parent component
       onClose();
     } catch (error) {
       console.error('Error:', error);

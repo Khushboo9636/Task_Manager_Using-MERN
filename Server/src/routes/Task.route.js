@@ -113,39 +113,8 @@ router.delete('/delete/:id', isAuthenticated, async (req, res) => {
 });
 
 
-  
-// router.get('/analytics', isAuthenticated, async (req, res) => {
-//   try {
-//     const userId = req.user._id;
-//     const totalTasks = await Task.countDocuments({ createdBy: userId });
-//     const todoTasks = await Task.countDocuments({ createdBy: userId, state: 'Todo' });
-//     const backlogTasks = await Task.countDocuments({ createdBy: userId, state: 'Backlog' });
-//     const inProgressTasks = await Task.countDocuments({ createdBy: userId, state: 'In Progress' });
-//     const completedTasks = await Task.countDocuments({ createdBy: userId, state: 'Done' });
-//     const lowPriorityTasks = await Task.countDocuments({ createdBy: userId, priority: 'Low' });
-//     const moderatePriorityTasks = await Task.countDocuments({ createdBy: userId, priority: 'Medium' });
-//     const highPriorityTasks = await Task.countDocuments({ createdBy: userId, priority: 'High' });
-//     const dueDateTasks = await Task.countDocuments({ createdBy: userId, dueDate: { $exists: true } });
-    
-//     const analyticsData = {
-//       totalTasks,
-//       todoTasks,
-//       backlogTasks,
-//       inProgressTasks,
-//       completedTasks,
-//       lowPriorityTasks,
-//       moderatePriorityTasks,
-//       highPriorityTasks,
-//       dueDateTasks
-//     };
-    
-//     res.status(200).json(analyticsData);
-//   } catch (error) {
-//     console.error('Error fetching analytics data:', error);
-//     res.status(500).json({ message: 'Internal server error' });
-//   }
-// });
-  
+
+
 router.get('/analytics', isAuthenticated, async (req, res) => {
   try {
     const userId = req.user._id;

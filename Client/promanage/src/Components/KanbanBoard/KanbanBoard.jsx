@@ -9,10 +9,9 @@ import { MoreHorizontal, Plus } from 'react-feather';
 function KanbanBoard({ title, collapseIcon, addIcon, tasks, onMove,onAdd ,onUpdateTask ,onDeleteTask,updateCategoryInBackend, handleSaveEdit }) {
   const moveCard = (taskId, newStatus) => {
     onMove(taskId, newStatus); 
-    // Implement the moveCard functionality here
+  
     console.log(`Moving card ${taskId} to ${newStatus}`);
     
-    // You can update the tasks array in this function
   };
   const handleAddClick = () => {
     if (onAdd) {
