@@ -32,7 +32,7 @@ function Board() {
     const fetchName = async () => {
       try {
         const token = localStorage.getItem('token');
-        const response = await fetch('http://localhost:4000/api/user/showname', {
+        const response = await fetch('https://khushisinha011-cuvette-final-project.onrender.com/api/user/showname', {
           method: 'GET',
           headers: {
             'Authorization': `Bearer ${token}`
@@ -60,7 +60,7 @@ function Board() {
     try {
       const token = localStorage.getItem('token');
 
-      const response = await fetch('http://localhost:4000/api/task/getAlltask', {
+      const response = await fetch('https://khushisinha011-cuvette-final-project.onrender.com/api/task/getAlltask', {
         headers: {
           'Authorization': `Bearer ${token}`
         }
@@ -96,7 +96,7 @@ function Board() {
   const updateCategoryInBackend = async (taskId, newStatus) => {
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch(`http://localhost:4000/api/task/move/${taskId}`, {
+      const response = await fetch(`https://khushisinha011-cuvette-final-project.onrender.com/api/task/move/${taskId}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -128,7 +128,7 @@ function Board() {
     try {
       const token = localStorage.getItem('token');
 
-      const response = await fetch('http://localhost:4000/api/task/create', {
+      const response = await fetch('https://khushisinha011-cuvette-final-project.onrender.com/api/task/create', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -161,7 +161,7 @@ function Board() {
   const handleDeleteTask = async (taskId) => {
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch(`http://localhost:4000/api/task/delete/${taskId}`, {
+      const response = await fetch(`https://khushisinha011-cuvette-final-project.onrender.com/api/task/delete/${taskId}`, {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${token}`

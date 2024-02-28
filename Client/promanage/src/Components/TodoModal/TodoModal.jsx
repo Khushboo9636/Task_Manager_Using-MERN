@@ -91,10 +91,7 @@ function TodoModal({ onClose, onSave ,task }) {
   return (
     <div className={style.modalOverlay}>
       <div className={style.todoModal}>
-        {/* <div className={style.modalHeader}>
-          <h1>Todo</h1>
-          <XCircle onClick={onClose} />
-        </div> */}
+   
         <div className={style.modalBody}>
           <div className={style.inputGroup1}>
             <label>Title <span style={{color:"red"}}>*</span></label>
@@ -179,22 +176,6 @@ function TodoModal({ onClose, onSave ,task }) {
               </div>
             )}
 
-{/* <button onClick={() => setShowDatePicker(true)}>
-              {dueDate ? dueDate.toLocaleDateString() : 'Select Due Date'}
-            </button>
-            {showDatePicker && (
-              <div className={style.datePicker}>
-
-                <DatePicker
-                  selected={dueDate}
-                  onChange={(date) => setDueDate(date)}
-                  inline
-                />
-                <button onClick={() => setDueDate(null)}>Clear</button>
-                <button onClick={() => setShowDatePicker(false)}>Cancel</button>
-                <button onClick={handleSave}>Save</button>
-              </div>
-            )} */}
 
 
          <div className={style.btns}>

@@ -99,7 +99,7 @@ function Card({ onMove, currentBoard, moveCard, task, availableCategories, onUpd
   const copyShareableLink = async (taskId) => {
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch(`http://localhost:4000/api/task/tasks/${taskId}/share`, {
+      const response = await fetch(`https://khushisinha011-cuvette-final-project.onrender.com/api/task/tasks/${taskId}/share`, {
         method: 'POST',
         headers: {
           "Authorization": `Bearer ${token}`

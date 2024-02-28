@@ -37,7 +37,7 @@ function Setting() {
     }
 
       const token = localStorage.getItem('token');
-      const response = await fetch('http://localhost:4000/api/user/update/password', {
+      const response = await fetch('https://khushisinha011-cuvette-final-project.onrender.com/api/user/update/password', {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',

@@ -18,7 +18,7 @@ function PublicDashboard() {
   // Function to fetch task details
   const fetchTaskDetails = async (taskId) => {
     try {
-      const response = await fetch(`http://localhost:4000/api/task/gettask/${taskId}`);
+      const response = await fetch(`https://khushisinha011-cuvette-final-project.onrender.com/api/task/gettask/${taskId}`);
       if (response.ok) {
         const taskData = await response.json();
         setTask(taskData);

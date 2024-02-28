@@ -12,7 +12,7 @@ function Analytics() {
           throw new Error('Authentication token not found');
         }
 
-        const response = await fetch('http://localhost:4000/api/task/analytics', {
+        const response = await fetch('https://khushisinha011-cuvette-final-project.onrender.com/api/task/analytics', {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',

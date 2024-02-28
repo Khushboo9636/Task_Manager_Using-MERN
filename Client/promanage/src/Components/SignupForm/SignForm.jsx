@@ -21,7 +21,7 @@ function SignForm() {
             formData.createdDate = currentDate.toISOString(); 
 
 
-          const response = await fetch("http://localhost:4000/api/user/register", {
+          const response = await fetch("https://khushisinha011-cuvette-final-project.onrender.com/api/user/register", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
