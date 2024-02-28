@@ -1,0 +1,97 @@
+.container{
+    padding: 40px;
+    align-items: center;
+    display: flex;
+    flex-flow: column;
+    padding-top: 20px;
+}
+.formValues{
+    border: 1px solid #D0D0D0;
+    width: 100%;
+    padding: 3px;
+    display: flex;
+    margin: 10px;
+    border-radius: 11.03px;
+}
+.input{
+   border: none;
+   width: 100%;
+    border: none;
+}
+.form{
+    padding: 15px;
+    display: flex;
+    flex-flow: column; 
+}
+.loginbtns:hover{
+    margin-left: 11px;
+    margin-top: 7px;
+    width: 304px;
+    height: 40px;
+    background-color: #17A2B8;
+    border: transparent;
+    color: white;
+    border-radius: 33px;
+    Gap:11.03px;
+    font-family: Open Sans; 
+    font-size: 19px;
+    font-weight: 400;
+    line-height: 26px;
+    letter-spacing: 0em;
+    cursor: pointer;
+   text-align: center;
+
+}
+.loginbtns{
+    margin-left: 11px;
+    margin-top: 7px;
+    width: 304px;
+    height: 40px;
+    background-color: white;
+    border:1px solid #17A2B8;
+    color: #17A2B8;
+    border-radius: 33px;
+    Gap:11.03px;
+    font-family: Open Sans; 
+    font-size: 19px;
+    font-weight: 400;
+    line-height: 26px;
+    letter-spacing: 0em;
+   text-align: center;
+   cursor: pointer;
+
+}
+.signbutton{
+    margin-left: 11px;
+    margin-top: 7px;
+    width: 304px;
+    height: 40px;
+    background-color: #17A2B8;
+    border: transparent;
+    border-radius: 33px;
+    Gap:11.03px;
+    color: white;
+    font-family: Open Sans; 
+    font-size: 19px;
+    font-weight: 400;
+    line-height: 26px;
+    letter-spacing: 0em;
+   text-align: center;
+   cursor: pointer;
+
+}
+.icon{
+    color: gray;
+    width: 19px;
+    padding: 5px;
+}
+.footerDes{
+ color: #828282;
+ font-family: Open Sans;
+font-size: 19px;
+font-weight: 400;
+line-height: 26px;
+letter-spacing: 0em;
+text-align: left;
+
+}

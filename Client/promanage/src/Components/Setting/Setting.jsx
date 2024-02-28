@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import style from './Style.module.css';
+import { Lock, User } from 'react-feather';
 
 function Setting() {
   const [formData, setFormData] = useState({
@@ -42,7 +43,7 @@ function Setting() {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${token}`
         },
-         body: JSON.stringify({ ...formData, email })
+         body: JSON.stringify({ ...formData, email , newName: formData.name })
       });
   
       // Log the response body for debugging
@@ -52,7 +53,7 @@ function Setting() {
         throw new Error('Failed to update password.');
       }
   
-      setSuccessMessage('Password updated successfully!');
+      setSuccessMessage('Password and name updated successfully!');
       setErrorMessage('');
       // Reset form fields after successful submission
       setFormData({
@@ -60,6 +61,7 @@ function Setting() {
         oldPassword: '',
         newPassword: ''
       });
+      
     } catch (error) {
       console.error('Error updating password:', error);
       setSuccessMessage('');
@@ -69,10 +71,12 @@ function Setting() {
   
   return (
     <div className={style.passwordUpdateForm}>
+      <div className={style.heading}>Setting</div>
       {errorMessage && <div className={style.errorMessage}>{errorMessage}</div>}
       {successMessage && <div className={style.successMessage}>{successMessage}</div>}
       <form onSubmit={handleSubmit}>
         <div className={style.inputGroup}>
+          <User className={style.userIcon}/>
           <input
             type="text"
             name="name"
@@ -81,9 +85,10 @@ function Setting() {
             placeholder="Name"
             className={style.inputField}
           />
-          <i className={`fas fa-user ${style.icon}`} /> {/* Replace the class with your icon library */}
+         
         </div>
         <div className={style.inputGroup}>
+          <Lock className={style.icon}/>
           <input
             type="password"
             name="oldPassword"
@@ -92,9 +97,10 @@ function Setting() {
             placeholder="Old Password"
             className={style.inputField}
           />
-          <i className={`fas fa-lock ${style.icon}`} /> {/* Replace the class with your icon library */}
+          
         </div>
         <div className={style.inputGroup}>
+        <Lock className={style.icon}/>
           <input
             type="password"
             name="newPassword"
@@ -103,9 +109,9 @@ function Setting() {
             placeholder="New Password"
             className={style.inputField}
           />
-          <i className={`fas fa-lock ${style.icon}`} /> {/* Replace the class with your icon library */}
+         
         </div>
-        <button type="submit" className={style.submitButton}>Update Password</button>
+        <button type="submit" className={style.update}>Update</button>
       </form>
     </div>
   );

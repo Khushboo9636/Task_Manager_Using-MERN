@@ -16,7 +16,9 @@ function Dashboard() {
 
   return (
     <div className={style.main}>
+      <div  className={style.side}>
       <Sidebar activePage={activePage} handlePageChange={handlePageChange} />
+      </div>
       <div className={style.mainContent}>
         {activePage === 'board' && <Board />}
         {activePage === 'analytics' && <Analytics />}

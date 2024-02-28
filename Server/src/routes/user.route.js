@@ -34,6 +34,24 @@ router.post('/login', async (req, res) => {
         
     }
 });
+router.get('/showname',isAuthenticated, async (req, res) => {
+    try {
+      
+      const userId = req.user._id; 
+     
+      const user = await User.findById(userId);
+  
+      if (!user) {
+        return res.status(404).json({ error: 'User not found' });
+      }
+  
+     
+      res.json({ name: user.name });
+    } catch (error) {
+      console.error('Error fetching user profile:', error);
+      res.status(500).json({ error: 'Internal server error' });
+    }
+  });
 // Update user's name route
 router.put('/update/name', async (req, res) => {
     try {
@@ -50,10 +68,12 @@ router.put('/update/name', async (req, res) => {
 // Route for updating password
 router.put('/update/password', isAuthenticated, async (req, res) => {
     try {
-        const { email, oldPassword, newPassword } = req.body;
-
-        // Find the user by email
+        const { email, oldPassword, newPassword,newName } = req.body;
+        console.log('Received data:', { email, oldPassword, newPassword, newName });
+     
         const user = await User.findOne({ email });
+
+
         if (!user) {
             return res.status(404).json({ message: 'User not found' });
         }
@@ -70,15 +90,15 @@ router.put('/update/password', isAuthenticated, async (req, res) => {
         // Update the password in the database
         const updatedUser = await User.findOneAndUpdate(
             { email },
-            { password: hashedNewPassword },
+            { password: hashedNewPassword, name: newName  },
             { new: true } // To return the updated document
         );
-
+        console.log('Updated user:', updatedUser);
         if (!updatedUser) {
             return res.status(404).json({ message: 'User not found' });
         }
 
-        res.json({ message: 'Password updated successfully' });
+        res.json({ message: 'Password and name updated successfully' });
     } catch (error) {
         console.error('Error updating password:', error);
         res.status(500).json({ error: 'Internal server error' });

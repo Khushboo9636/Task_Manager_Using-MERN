@@ -3,6 +3,7 @@ import React from 'react';
 import style from './Style.module.css';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
+import { Lock, Mail } from 'react-feather';
 
 function LoginForm() {
   const { register, handleSubmit, formState: { errors } } = useForm();
@@ -43,27 +44,31 @@ function LoginForm() {
       <h2 className={style.heading}>Login</h2>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className={style.formValues}>
+          <Mail className={style.icon}/>
           <input
             className={style.input}
             type="email"
             {...register('email', { required: true })}
             placeholder='Email'
           />
-          {errors.email && <span>Email is required</span>}
+          
         </div>
+        {errors.email && <div style={{color:"red"}}>Email is required</div>}
         <div className={style.formValues}>
+          <Lock className={style.icon}/>
           <input
             className={style.input}
             type="password"
             {...register('password', { required: true })}
             placeholder='Password'
           />
-          {errors.password && <span>Password is required</span>}
+          
         </div>
-        <button type="submit">Login</button>
+        {errors.password && <div style={{color:"red"}}>Password is required</div>}
+        <button type="submit" className={style.loginbtns}>Login</button>
       </form>
-      <p>Don't have an account yet?</p>
-      <button onClick={() => navigate('/signup')}>Register</button>
+      <p className={style.footerDes}>Don't have an account yet?</p>
+      <button className={style.signbutton} onClick={() => navigate('/')}>Register</button>
     </div>
   );
 }

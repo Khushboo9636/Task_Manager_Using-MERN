@@ -4,9 +4,13 @@ import React from 'react';
 import style from './Style.module.css';
 import Card from '../Card/Card.jsx';
 import { MoreHorizontal, Plus } from 'react-feather';
+import { useState } from 'react';
+import collab from '../../assets/collapse.png'
 
 
 function KanbanBoard({ title, collapseIcon, addIcon, tasks, onMove,onAdd ,onUpdateTask ,onDeleteTask,updateCategoryInBackend, handleSaveEdit }) {
+  const [isAllCollapsed, setIsAllCollapsed] = useState(false);
+  
   const moveCard = (taskId, newStatus) => {
     onMove(taskId, newStatus); 
   
@@ -34,13 +38,20 @@ function KanbanBoard({ title, collapseIcon, addIcon, tasks, onMove,onAdd ,onUpda
         return [];               
     }
   };
+
+  const toggleCollapseAll = () => {
+    setIsAllCollapsed(prevState => !prevState);
+  };
+
+
   return (
     <div className={style.board}>
       <div className={style.board_top}>
         <h2>{title}</h2>
         <div className={style.icons}>
-          {collapseIcon && <MoreHorizontal />}
-          {addIcon && <Plus onClick={handleAddClick} />}
+        {addIcon && <Plus onClick={handleAddClick} />}
+          {collapseIcon && <img src={collab} alt='collapse' onClick={toggleCollapseAll}  />}
+          
         </div>
       </div>
       <div className={style.board_cards}>
@@ -56,6 +67,7 @@ function KanbanBoard({ title, collapseIcon, addIcon, tasks, onMove,onAdd ,onUpda
             onDeleteTask={onDeleteTask}
             updateCategoryInBackend={updateCategoryInBackend}
             handleSaveEdit={handleSaveEdit}
+            isCollapsed={isAllCollapsed} 
           />
         ))}
       </div>

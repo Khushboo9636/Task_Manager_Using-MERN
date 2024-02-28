@@ -1,0 +1,51 @@
+.heading{
+    padding: 10px;
+    font-family: Open Sans;
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 30px;
+    letter-spacing: 0em;
+    text-align: left;
+    width: 100vw;
+   height: 5vh;
+   padding-left: 10px;
+}
+.inputGroup{
+    border: 1px solid #D0D0D0;
+    width: 40%;
+    padding: 3px;
+    display: flex;
+    margin: 10px;
+    border-radius: 11.03px;
+
+}
+.inputField{
+    width: 100%;
+    border: none;
+}
+.userIcon{
+    padding: 5px;
+    color: gray;
+    width: 19px;
+}
+.icon{
+    padding: 5px;
+    color: gray;
+    width: 19px;
+}
+.form{
+    padding: 15px;
+    display: flex;
+    flex-flow: column;
+}
+.update{
+    margin-left: 11px;
+    margin-top: 7px;
+    width: 304px;
+    height: 40px;
+    background-color: #17A2B8;
+    border: transparent;
+    border-radius: 33px;
+    Gap:11.03px;
+
+}

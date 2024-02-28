@@ -17,6 +17,7 @@ const registerUser = async (userData) => {
 
         return newUser;
     } catch (error) {
+        
         throw error;
         
     }
@@ -46,31 +47,6 @@ const loginUser = async (email, password) => {
     }
 };
 
-
-// const updateUserPassword = async ({ name, oldPassword, newPassword }) => {
-//     try {
-//         const user = await User.findOne({ name });
-//         if (!user) {
-//             throw new Error('User not found.');
-//         }
-
-//         const isMatch = await bcrypt.compare(oldPassword, user.password);
-//         if (!isMatch) {
-//             throw new Error('Invalid old password.');
-//         }
-
-//         const hashedNewPassword = await bcrypt.hash(newPassword, 10);
-//         console.log('Hashed new password:', hashedNewPassword);
-
-//         user.password = hashedNewPassword;
-//         await user.save();
-
-//         console.log('Password updated successfully');
-
-//     } catch (error) {
-//         throw error;
-//     }
-// };
 
 
 const verifyToken = (req, res, next) => {

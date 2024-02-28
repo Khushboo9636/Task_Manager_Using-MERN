@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import style from './Style.module.css';
 import { MoreHorizontal } from 'react-feather';
+import { ChevronDown } from 'react-feather';
+import { ChevronUp } from 'react-feather';
 import Chip from '../Chip/Chip';
 import TodoModal from '../TodoModal/TodoModal.jsx';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import DeleteModal from '../DeleteModal/DeleteModal.jsx';
 
-function Card({ onMove, currentBoard, moveCard, task, availableCategories, onUpdateTask ,onDeleteTask ,updateCategoryInBackend, handleSaveEdit }) {
+function Card({ onMove, currentBoard, moveCard, task, availableCategories, onUpdateTask ,onDeleteTask ,updateCategoryInBackend, handleSaveEdit,isCollapsed }) {
   const [isExpanded, setIsExpanded] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
   const [showEditModal, setShowEditModal] = useState(false);
@@ -17,16 +19,36 @@ function Card({ onMove, currentBoard, moveCard, task, availableCategories, onUpd
 
 
   useEffect(() => {
-    // Check if the task has a due date and if it's past due
+    
+    
     if (task.dueDate) {
       const currentDate = new Date();
-      const isPast = new Date(task.dueDate) < currentDate;
-      setIsPastDue(isPast);
+      const yesterday = new Date(currentDate);
+      yesterday.setDate(currentDate.getDate() - 1);
+      
+      
+      if (currentBoard === 'done') {
+        
+        setIsPastDue(false);
+      } else {
+      
+        const isPast = new Date(task.dueDate) < yesterday;
+        setIsPastDue(isPast);
+      }
+    } else {
+     
+      setIsPastDue(false);
     }
-    // Calculate the initial checked count
+  
+
+   
     const initialCheckedCount = task.checklist.filter(item => item.isChecked).length;
     setCheckedCount(initialCheckedCount);
-  }, [task.dueDate, task.checklist]);
+  }, [task.dueDate, task.checklist , currentBoard ]);
+  useEffect(() => {
+    
+    setIsExpanded(false);
+  }, [isCollapsed]);
 
   const toggleExpand = () => {
     setIsExpanded(prevState => !prevState);
@@ -51,37 +73,10 @@ function Card({ onMove, currentBoard, moveCard, task, availableCategories, onUpd
     setShowDeleteModal(false);
   };
   
-  // const handleSaveEdit = async (updatedTask) => {
-  //   try {
-  //     const token = localStorage.getItem('token');
-  //     const response = await fetch(`http://localhost:4000/api/task/edit/${task._id}`, {
-  //       method: 'PUT',
-  //       headers: {
-  //         'Content-Type': 'application/json',
-  //         Authorization: `Bearer ${token}`,
-  //       },
-  //       body: JSON.stringify(updatedTask),
-  //     });
-  //     if (!response.ok) {
-  //       throw new Error('Network response was not ok.');
-  //     }
-  //      // Update task in the UI after successful API call
-  //      onUpdateTask(updatedTask);
-  //     console.log('Task updated successfully:', updatedTask);
-  //      // Update local storage
-  //   const updatedTasks = tasks.map(task =>
-  //     task._id === updatedTask._id ? updatedTask : task
-  //   );
-  //   localStorage.setItem('tasks', JSON.stringify(updatedTasks));
-  //   } catch (error) {
-  //     console.error('Error updating task:', error);
-  //     alert('Failed to update the task.');
-  //   }
-  // };
-
+ 
   const handleSaveEditLocal = async (updatedTask) => {
     await handleSaveEdit(updatedTask, task);
-    // You can perform additional actions after saving edit locally
+    
   };
   const handleChecklistItemChange = async (index) => {
     try {
@@ -89,14 +84,14 @@ function Card({ onMove, currentBoard, moveCard, task, availableCategories, onUpd
       updatedTask.checklist[index].isChecked = !updatedTask.checklist[index].isChecked;
   
       // Save the updated task
-      await handleSaveEdit(updatedTask, task); // Pass the original task as well
+      await handleSaveEdit(updatedTask, task); 
   
       // Update the checked count
       const newCheckedCount = updatedTask.checklist.filter(item => item.isChecked).length;
       setCheckedCount(newCheckedCount);
     } catch (error) {
       console.error('Error updating checklist item:', error);
-      // Handle error
+     
     }
   };
   
@@ -112,7 +107,7 @@ function Card({ onMove, currentBoard, moveCard, task, availableCategories, onUpd
       });
       if (response.ok) {
         const data = await response.json();
-        //setShareableLink(shareData.frontendShareableLink)
+      
         navigator.clipboard.writeText(data.frontendShareableLink);
         toast.success('Shareable link copied to clipboard!', {
           position: 'top-center'
@@ -128,9 +123,14 @@ function Card({ onMove, currentBoard, moveCard, task, availableCategories, onUpd
   
   function formatDate(dateString) {
     const date = new Date(dateString);
-    const options = { day: 'numeric', month: 'short', year: 'numeric' };
-    return date.toLocaleDateString('en-US', options);
+    const options = { day: 'numeric', month: 'short' };
+    const formattedDate = date.toLocaleDateString('en-US', options);
+  
+    const [day, month] = formattedDate.split(' ');
+    
+    return `${day} ${month}`;
   }
+  
 
 
  
@@ -159,13 +159,14 @@ function Card({ onMove, currentBoard, moveCard, task, availableCategories, onUpd
           </div>
         )}
       </div>
-      <div className={style.cardTitle}>{task.title}</div>
+      <div className={style.cardTitle} title={task.title}>{task.title}</div>
       <div className={style.cardBody}>
         {/* Render checklist */}
         <div className={style.checklist} onClick={toggleExpand}>
-          {/* Checklist ({task.checklist.filter((item) => item.isChecked).length}/{task.checklist.length}){' '}
-          {isExpanded ? '▲' : '▼'} */}
-           Checklist ({checkedCount}/{task.checklist.length}) {isExpanded ? '▲' : '▼'}
+        
+          <div className={style.chexktext}> Checklist ({checkedCount}/{task.checklist.length}) </div>
+          <div className={style.checkarrow}>{isExpanded ? <ChevronUp/> : <ChevronDown/>}</div>
+          
         </div>
         {isExpanded && (
           <div className={style.checklistItems}>
@@ -183,14 +184,17 @@ function Card({ onMove, currentBoard, moveCard, task, availableCategories, onUpd
       <div className={style.cardFooter}>
         <div className={style.cardFooterLabels}>
           {/* Render due date chip if present */}
-          {task.dueDate && <Chip text={formatDate(task.dueDate)}  color={isPastDue ? 'red' : 'gray'} />}
+          {task.dueDate && <Chip text={`${formatDate(task.dueDate)}th`}  color={isPastDue ? '#CF3636'
+          : currentBoard === 'done'
+          ? '#63C05B' 
+          : 'gray'} />}
         </div>
         <div className={style.cardFooterButtons}>
           {/* Render buttons for available categories */}
           {availableCategories.map(
-            (category) =>
+           (category) =>
               currentBoard !== category && (
-                <button key={category} onClick={() => handleMove(category)}>
+                <button key={category} className={style.buttonGroup} onClick={() => handleMove(category)}>
                   {category}
                 </button>
               )
@@ -212,7 +216,7 @@ function Card({ onMove, currentBoard, moveCard, task, availableCategories, onUpd
      {/* Delete modal */}
      {showDeleteModal && (
         <DeleteModal
-          onCancel={handleDeleteCancel}
+          onClose={handleDeleteCancel}
           onConfirm={handleDeleteConfirm }
         />
       )}

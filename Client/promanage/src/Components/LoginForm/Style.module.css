@@ -1,21 +1,117 @@
 /* Style.module.css */
 
-.input {
+  .container{
+    padding: 70px;
+    align-items: center;
+    display: flex;
+    flex-flow: column;
+}
+.formValues{
+    border: 1px solid #D0D0D0;
     width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    margin-bottom: 10px;
-  }
+    padding: 3px;
+    display: flex;
+    margin: 10px;
+    border-radius: 11.03px;
+}
+.input{
+   border: none;
+   width: 100%;
+    border: none;
+}
+.form{
+    padding: 15px;
+    display: flex;
+    flex-flow: column; 
+}
+.signbutton:hover{
+    margin-left: 11px;
+    margin-top: 7px;
+    width: 304px;
+    height: 40px;
+    background-color: #17A2B8;
+    border: transparent;
+    color: white;
+    border-radius: 33px;
+    Gap:11.03px;
+    font-family: Open Sans; 
+    font-size: 19px;
+    font-weight: 400;
+    line-height: 26px;
+    letter-spacing: 0em;
+   text-align: center;
+   cursor: pointer;
 
-  .placeholder-wrapper {
-    position: relative;
-  }
-  
-  .placeholder-text {
-    position: absolute;
-    top: 50%;
-    left: 10px;
-    transform: translateY(-50%);
-  }
-  
+}
+.loginbtns{
+    margin-left: 11px;
+    margin-top: 7px;
+    width: 304px;
+    height: 40px;
+    border: transparent;
+    background-color: #17A2B8;
+    color: white;
+    border-radius: 33px;
+    Gap:11.03px;
+    font-family: Open Sans; 
+    font-size: 19px;
+    font-weight: 400;
+    line-height: 26px;
+    letter-spacing: 0em;
+   text-align: center;
+   cursor: pointer;
+
+}
+.loginbtns:hover{
+  margin-left: 11px;
+  margin-top: 7px;
+  width: 304px;
+  height: 40px;
+  border: transparent;
+  background-color: #17A2B8;
+  color: white;
+  border-radius: 33px;
+  Gap:11.03px;
+  font-family: Open Sans; 
+  font-size: 19px;
+  font-weight: 400;
+  line-height: 26px;
+  letter-spacing: 0em;
+ text-align: center;
+ cursor: pointer;
+
+}
+.signbutton{
+    margin-left: 11px;
+    margin-top: 7px;
+    width: 304px;
+    height: 40px;
+   cursor: pointer;
+    border-radius: 33px;
+    Gap:11.03px;
+    font-family: Open Sans; 
+    font-size: 19px;
+    font-weight: 400;
+    line-height: 26px;
+    letter-spacing: 0em;
+   text-align: center;
+   background-color: white;
+   border:1px solid #17A2B8;
+   color: #17A2B8;
+
+}
+.icon{
+    color: gray;
+    width: 19px;
+    padding: 5px;
+}
+.footerDes{
+ color: #828282;
+ font-family: Open Sans;
+font-size: 19px;
+font-weight: 400;
+line-height: 26px;
+letter-spacing: 0em;
+text-align: left;
+
+}

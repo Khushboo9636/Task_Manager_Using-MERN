@@ -14,7 +14,8 @@
   .todoModal {
     background-color: #fff;
     border-radius: 8px;
-    width: 400px;
+    width: 666px;
+    height: 510px;
     padding: 20px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   }
@@ -32,10 +33,21 @@
   
   .modalBody {
     margin-bottom: 20px;
+    height: 85%;
+    padding-top: 22px;
+    width: 100%;
+    overflow-y: auto;
   }
   
   .inputGroup {
     margin-bottom: 20px;
+    width: 100%;
+    font-family: Inter;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 24px;
+    letter-spacing: 0.5px;
+    text-align: left;
   }
   
   .inputGroup label {
@@ -45,14 +57,32 @@
   }
   
   .inputGroup input[type='text'] {
-    width: 100%;
+    width: 95%;
     padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    border: none;
+    
+    height: 25px;
+   
   }
+  .inputGroup1 input[type='text'] {
+    width: 95%;
+    padding: 10px;
+    border: 1px solid #fff;
+    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    height: 25px;
+    margin-top: 6px;
+    margin-bottom: 10px;
+   
+  }
+  
+
   
   .priorityOptions {
     display: flex;
+    flex-flow: row;
+    /* justify-content: space-evenly; */
+    justify-content: space-evenly;
   }
   
   .priorityOption {
@@ -60,8 +90,33 @@
     border-radius: 5px;
     cursor: pointer;
     margin-right: 10px;
+    padding: 5px 10px 5px 10px;
+    /* border-radius: 5px; */
+    width: 135px;
+    cursor: pointer;
+    margin-right: 10px;
+    border: 1px solid #E2E2E2;
+    height: 25px;
+    border-radius: 8px;
+    font-family: Poppins;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+    letter-spacing: 0em;
+    text-align: center;
+    padding-top: 13px;
+    
   }
-  
+  .spanElem{
+    font-size: 20px;
+    padding-left: 5px;
+    position: absolute;
+  }
+  .buttonAdd{
+    padding-top: 10px;
+    position: relative;
+
+  }
   .priorityOption.selected {
     background-color: lightblue; /* Change the background color for selected priority */
   }
@@ -75,15 +130,42 @@
   .checklistItem input[type='text'] {
     flex: 1;
     padding: 10px;
+   
+  }
+  .checklistItem{
+    border: 1px solid #E2E2E2;
+    display: flex;
+    flex: 1;
+    padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
+    flex-flow: row;
+    width: auto;
+    border-radius: 10px;
+    justify-content: start;
+    padding: 5px;
+    margin-top: 10px;
   }
-  
+  .modalFooter{
+    position: relative;
+    height: 7%;
+    width: 100%;
+    padding-left: 5px;
+    display: flex;
+    flex-flow: row;
+    justify-content: space-evenly;
+    
+  }
+  .btns{
+    display: flex;
+    flex-flow: row;
+  }
   .modalFooter button {
     padding: 10px 20px;
     margin-right: 10px;
     cursor: pointer;
-    border: none;
+   text-align: center;
+
     border-radius: 5px;
   }
   
@@ -91,8 +173,8 @@
     margin-right: 0;
   }
   .redCircle {
-    width: 20px;
-    height: 20px;
+    width: 10px;
+    height: 10px;
     border-radius: 50%;
     background-color: red;
     display: inline-block;
@@ -100,8 +182,8 @@
   }
   
   .blueCircle {
-    width: 20px;
-    height: 20px;
+    width: 10px;
+    height: 10px;
     border-radius: 50%;
     background-color: blue;
     display: inline-block;
@@ -109,12 +191,80 @@
   }
   
   .greenCircle {
-    width: 20px;
-    height: 20px;
+    width: 10px;
+    height: 10px;
     border-radius: 50%;
     background-color: green;
     display: inline-block
   
   }
+  .confirm{
+    background-color: #17A2B8;
+    color: white;
+    cursor: pointer;
+    border: transparent;
+    text-align: center;
+    align-items: center;
+    width: 130px;
+
+  }
+  .cancel:hover{
+    
+  }
+  .cancel{
+    border-color: red;
+    color:red;
+    border: 1px solid red;
+    background-color: white;
+    cursor: pointer;
+    text-align: center;
+    align-items: center;
+    width: 130px;
+  }
   /* Add more styles as needed */
+  .due{
+    background-color: white;
+    cursor: pointer;
+    color: #707070;
+    border: 1px solid #707070;
+    border-radius: 22px;
+    border-color: #707070;
+    text-align: center;
+    align-items: center;
+  }
+  .react-datepicker-popper{
+    border: 1px solid #aeaeae;
+    height: 279px
+  }
+  .react-datepicker{
+    border: none;
+  }
+  .buttonGroup{
+    position: absolute;
+    top: -53px;
+    left: 181px;
+    width: 65px;
+    display: flex;
+    flex-flow: row;
+  }
+  .react-datepicker-wrapper{
+    width: 34px;
+  }
+  .react-datepicker__input-container{
+
+  }
+  .datePickerContainer{
+    width: 27%;
+    position: absolute;
+    
   
+  }
+  .datePickerContainer input{
+    position: relative;
+    width: 34px;
+    left: 22px;
+  }
+  .calender{
+    display: flex;
+    flex-flow: column;
+  }

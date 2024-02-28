@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';import { useEffect } from 'react';
 import style from './Style.module.css';
-import { Plus, XCircle } from 'react-feather';
+import { Plus, Trash, XCircle } from 'react-feather';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
@@ -22,6 +22,10 @@ function TodoModal({ onClose, onSave ,task }) {
       setDueDate(task.dueDate ? new Date(task.dueDate) : null);
     }
   }, [task]);
+  // Calculate the count of checked checklist items
+  const checkedItemCount = checklistItemStates.filter(item => item).length;
+  // Total number of checklist items
+  const totalItemCount = checklistItems.length;
 
   const handleAddChecklistItem = () => {
     setChecklistItems([...checklistItems, '']);
@@ -87,22 +91,23 @@ function TodoModal({ onClose, onSave ,task }) {
   return (
     <div className={style.modalOverlay}>
       <div className={style.todoModal}>
-        <div className={style.modalHeader}>
+        {/* <div className={style.modalHeader}>
           <h1>Todo</h1>
           <XCircle onClick={onClose} />
-        </div>
+        </div> */}
         <div className={style.modalBody}>
-          <div className={style.inputGroup}>
-            <label>Title *</label>
-            <input
+          <div className={style.inputGroup1}>
+            <label>Title <span style={{color:"red"}}>*</span></label>
+            <input 
               type="text"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
               placeholder="Enter task title"
+              className={style.textTitleInput}
             />
           </div>
           <div className={style.inputGroup}>
-            <label>Select Priority *</label>
+            <div style={{float:"left",paddingTop:"8px"}}>Select Priority <span style={{color:"red"}}>*</span></div>
             <div className={style.priorityOptions}>
             <div
                 className={`${style.priorityOption} ${
@@ -131,7 +136,7 @@ function TodoModal({ onClose, onSave ,task }) {
             </div>
           </div>
           <div className={style.inputGroup}>
-            <label>Checklist *</label>
+            <label>Checklist  ({checkedItemCount}/{totalItemCount}) <span style={{color:"red"}}>*</span></label>
             {checklistItems.map((item, index) => (
               <div key={index} className={style.checklistItem}>
                  <input
@@ -144,26 +149,32 @@ function TodoModal({ onClose, onSave ,task }) {
                   value={item}
                   onChange={(e) => handleChecklistItemChange(index, e.target.value)}
                 />
-                <XCircle onClick={() => handleChecklistItemDelete(index)} />
+                <Trash style={{color:"red"}} onClick={() => handleChecklistItemDelete(index)} />
               </div>
             ))}
-            <Plus onClick={handleAddChecklistItem} />
+            <div className={style.buttonAdd} onClick={handleAddChecklistItem}>
+            <Plus/> <span className={style.spanElem}>Add New</span>
+
+            </div>
           </div>
         </div>
         <div className={style.modalFooter}>
-        <button onClick={() => setShowDatePicker(true)}>
+        <button onClick={() => setShowDatePicker(true)} className={style.due}>
               {dueDate ? dueDate.toDateString() : 'Select Due Date'}
             </button>
             {showDatePicker && (
               <div className={style.datePickerContainer}>
-                <DatePicker
+                <div className={style.calender}>
+                 <DatePicker
                   selected={dueDate}
                   onChange={(date) => setDueDate(date)}
                   dateFormat="dd/MM/yyyy"
                 />
+                
                 <div className={style.buttonGroup}>
                   <button onClick={() => setDueDate(null)}>Clear</button>
                   <button onClick={handleSetToday}>Today</button>
+                </div>
                 </div>
               </div>
             )}
@@ -186,9 +197,11 @@ function TodoModal({ onClose, onSave ,task }) {
             )} */}
 
 
-
-          <button onClick={handleSave}>Save</button>
-          <button onClick={onClose}>Cancel</button>
+         <div className={style.btns}>
+         <button className={style.cancel} onClick={onClose}>Cancel</button>
+          <button className={style.confirm} onClick={handleSave}>Save</button>
+          
+          </div>
           {/* <button>Select Due Date</button> */}
         </div>
       </div>
