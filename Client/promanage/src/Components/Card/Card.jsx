@@ -183,7 +183,7 @@ function Card({ onMove, currentBoard, moveCard, task, availableCategories, onUpd
       </div>
       <div className={style.cardFooter}>
         <div className={style.cardFooterLabels}>
-          {/* Render due date chip if present */}
+          
           {task.dueDate && <Chip text={`${formatDate(task.dueDate)}th`}  color={isPastDue ? '#CF3636'
           : currentBoard === 'done'
           ? '#63C05B' 

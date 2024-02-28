@@ -74,8 +74,7 @@ function Board() {
       
       setTasks(data);
 
-      // Save fetched tasks to local storage
-      //localStorage.setItem('tasks', JSON.stringify(data));
+    
     } catch (error) {
       console.error('Error fetching tasks:', error);
     }
@@ -194,7 +193,6 @@ function Board() {
   };
 
   // Filter tasks based on the selected filter type
-// Filter tasks based on the selected filter type
 const filteredTasks = () => {
   switch (filterType) {
     case 'today':

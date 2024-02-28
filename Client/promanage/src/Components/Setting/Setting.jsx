@@ -46,7 +46,7 @@ function Setting() {
          body: JSON.stringify({ ...formData, email , newName: formData.name })
       });
   
-      // Log the response body for debugging
+     
       console.log(await response.json());
   
       if (!response.ok) {
