@@ -144,8 +144,9 @@ function Board() {
       const createdTodo = await response.json();
      setTasks([...tasks, createdTodo]); // Add the new todo to the tasks list
        
-
-      setShowTodoModal(false); // Close TodoModal after saving
+      fetchTasks()
+      setShowTodoModal(false);
+      // Close TodoModal after saving
     } catch (error) {
       console.error('Error creating todo:', error);
     }
