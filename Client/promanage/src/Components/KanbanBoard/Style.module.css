@@ -22,6 +22,7 @@ p{
     display: flex;
     align-items: center;
     justify-content: space-between;
+    padding-left: 15px;
 }
 .top_title{
 flex: 1;

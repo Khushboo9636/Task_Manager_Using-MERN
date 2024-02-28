@@ -307,7 +307,7 @@ const isWithinMonth = (date) => {
             addIcon={false}
             tasks={filteredTasks().filter((task) => task.state === 'Backlog')}
             onMove={handleMove}
-            onUpdateTask={handleUpdateTask}             //Backlog', 'Todo', 'In Progress', 'Done'
+            onUpdateTask={handleUpdateTask}             
             onDeleteTask={handleDeleteTask}
             updateCategoryInBackend={updateCategoryInBackend}
             handleSaveEdit={handleSaveEdit}
@@ -327,10 +327,10 @@ const isWithinMonth = (date) => {
      
           />
           <KanbanBoard
-            title="In Progress"
+            title="Progress"
             collapseIcon={true}
             addIcon={false}
-            tasks={filteredTasks().filter((task) => task.state === 'In Progress')}
+            tasks={filteredTasks().filter((task) => task.state === 'Progress')}
             onMove={handleMove}                     
             onUpdateTask={handleUpdateTask} 
             onDeleteTask={handleDeleteTask}

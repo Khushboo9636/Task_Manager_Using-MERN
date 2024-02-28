@@ -27,13 +27,13 @@ function KanbanBoard({ title, collapseIcon, addIcon, tasks, onMove,onAdd ,onUpda
    const determineAvailableCategories = (currentCategory) => {
     switch (currentCategory) {
       case 'Backlog':
-        return ['Todo', 'In Progress', 'Done'];
+        return ['Todo', 'Progress', 'Done'];
       case 'Todo':
-        return ['Backlog', 'In Progress', 'Done'];
-      case 'In Progress':
+        return ['Backlog', 'Progress', 'Done'];
+      case 'Progress':
         return ['Backlog', 'Todo', 'Done'];
       case 'Done':
-        return ['Backlog', 'Todo', 'In Progress'];
+        return ['Backlog', 'Todo', 'Progress'];
       default:
         return [];               
     }

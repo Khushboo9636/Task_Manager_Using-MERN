@@ -26,7 +26,7 @@ const taskSchema = new mongoose.Schema({
   }],
   state: {
     type: String,
-    enum: ['Backlog', 'Todo', 'In Progress', 'Done'],
+    enum: ['Backlog', 'Todo', 'Progress', 'Done'],
     default: 'Todo'
   },
   createdBy: {
