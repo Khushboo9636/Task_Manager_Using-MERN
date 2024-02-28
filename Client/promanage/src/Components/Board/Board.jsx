@@ -144,7 +144,7 @@ function Board() {
       const createdTodo = await response.json();
      setTasks([...tasks, createdTodo]); // Add the new todo to the tasks list
        
-      fetchTasks();
+     await fetchTasks();
       setShowTodoModal(false); // Close TodoModal after saving
     } catch (error) {
       console.error('Error creating todo:', error);
@@ -238,7 +238,7 @@ const isWithinMonth = (date) => {
   const handleSaveEdit = async (updatedTask, originalTask) => {
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch(`http://localhost:4000/api/task/edit/${originalTask._id}`, {
+      const response = await fetch(`https://khushisinha011-cuvette-final-project.onrender.com/api/task/edit/${originalTask._id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -252,7 +252,7 @@ const isWithinMonth = (date) => {
       }
   
        // Fetch the updated task from the backend using its ID
-     const updatedTaskResponse = await fetch(`http://localhost:4000/api/task/gettask/${originalTask._id}`, {
+     const updatedTaskResponse = await fetch(`https://khushisinha011-cuvette-final-project.onrender.com/api/task/gettask/${originalTask._id}`, {
          method: 'GET',  
      headers: {
         'Authorization': `Bearer ${token}`,

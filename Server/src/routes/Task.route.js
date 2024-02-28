@@ -223,7 +223,7 @@ async function calculateAnalyticsData(userId) {
     const totalTasks = await Task.countDocuments({ createdBy: userId });
     const todoTasks = await Task.countDocuments({ createdBy: userId, state: 'Todo' });
     const backlogTasks = await Task.countDocuments({ createdBy: userId, state: 'Backlog' });
-    const inProgressTasks = await Task.countDocuments({ createdBy: userId, state: 'In Progress' });
+    const inProgressTasks = await Task.countDocuments({ createdBy: userId, state: 'Progress' });
     const completedTasks = await Task.countDocuments({ createdBy: userId, state: 'Done' });
     const lowPriorityTasks = await Task.countDocuments({ createdBy: userId, priority: 'Low' });
     const moderatePriorityTasks = await Task.countDocuments({ createdBy: userId, priority: 'Medium' });
