@@ -36,8 +36,19 @@
 .heading{
     display: flex;
     color: white;
+    font-family: Open Sans;
+    font-weight: 600;
+    font-size: 33.08;
+    line-height: 66.15px;
+    align-items: center;
 }
 .p{
     color: white;
     margin-left: .5rem;
+    font-family: Open Sans;
+    font-weight: 400;
+    font-size: 19.29px;
+    line-height: 38.59px;
+    align-items: center;
+
 }
