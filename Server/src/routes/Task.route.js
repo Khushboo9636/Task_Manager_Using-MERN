@@ -59,7 +59,7 @@ router.post('/tasks/:id/share', isAuthenticated, async (req, res) => {
       }
       // Generate a shareable link
       const backendShareableLink = `${req.protocol}://${req.get('host')}/api/taskList/tasks/${taskId}`;
-      const frontendShareableLink = `http://localhost:3000/tasks/share/${taskId}`; // Modify this with your frontend route
+      const frontendShareableLink = `https://khushisinha011-cuvette-final-project-project-task-management.vercel.app/tasks/share/${taskId}`; // Modify this with your frontend route
       
       // Store share links in task model
       task.shareLink = backendShareableLink;
